@@ -3,19 +3,46 @@
 
 #include "pch.h"
 #include <iostream>
-
+#include<string>
+#include"DataValue.h"
+#include"TreeNode.h"
+using namespace std;
+void displayTree(TreeNode * node, string parent, string side);
 int main()
 {
     std::cout << "Hello World!\n"; 
+	int nodeNumber = 0;
+	TreeNode * root = new TreeNode();
+	root->setData(new DataValue("k", ++nodeNumber));
+	//TreeNode *c = new TreeNode();
+
+	root->insert(root, new DataValue("l", ++nodeNumber));
+	root->insert(root, new DataValue("d", ++nodeNumber));
+	root->insert(root, new DataValue("a", ++nodeNumber));
+	root->insert(root, new DataValue("e", ++nodeNumber));
+	root->insert(root, new DataValue("f", ++nodeNumber));
+	root->deleteNode(root, "d");
+	displayTree(root, " ", " ");
+
+
+	return 0;
+}
+void displayTree(TreeNode * node, string parent, string side)
+{
+	if (node == nullptr)
+	{
+		return;
+	}
+	if (side != " ")
+	{
+		side += " of";
+	}
+	cout << "Displaying node: " << node->getData()->getDataAsString() << side << " Parent = " << parent << endl;
+	if (node->getLeft() != nullptr) {
+		displayTree(node->getLeft(), node->getData()->getDataAsString(), "  Left");
+	}
+	if (node->getRight() != nullptr) {
+		displayTree(node->getRight(), node->getData()->getDataAsString(), "  Right");
+	}
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
