@@ -1,12 +1,13 @@
 // TreesWithLinkedLists.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
-
 #include "pch.h"
 #include <iostream>
 #include<string>
 #include"DataValue.h"
 #include"TreeNode.h"
+
 using namespace std;
+
 void displayTree(TreeNode * node, string parent, string side);
 int main()
 {
@@ -21,7 +22,7 @@ int main()
 	root->insert(root, new DataValue("a", ++nodeNumber));
 	root->insert(root, new DataValue("e", ++nodeNumber));
 	root->insert(root, new DataValue("f", ++nodeNumber));
-	root->deleteNode(root, "d");
+	root->deleteNode(root, "e");
 	displayTree(root, " ", " ");
 
 

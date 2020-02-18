@@ -61,29 +61,36 @@ DataValue * TreeNode::getData()
 	return dataValue;
 }
 
-TreeNode * TreeNode::addLeft(DataValue * data)
+//TreeNode * TreeNode::addLeft(DataValue * data)
+//{
+//	if (leftNode != nullptr)
+//	{
+//		throw "Left node already exists for node: " + leftNode->getData()->getValue();
+//	}
+//	leftNode = new TreeNode();
+//	leftNode->setData(data);
+//	return leftNode;
+//}
+//
+//TreeNode * TreeNode::addRight(DataValue * data)
+//{
+//	if (rightNode != nullptr)
+//	{
+//		throw "Right node already exists for node: " + rightNode->getData()->getValue();
+//	}
+//	rightNode = new TreeNode();
+//	rightNode->setData(data);
+//	return rightNode;
+//}
+
+TreeNode * TreeNode::FindMin(TreeNode * root)
 {
-	if (leftNode != nullptr)
-	{
-		throw "Left node already exists for node: " + leftNode->getData()->getValue();
+	while (root->leftNode != NULL)
+	{ 
+		root = root->leftNode; 
 	}
-	leftNode = new TreeNode();
-	leftNode->setData(data);
-	return leftNode;
+		return root;
 }
-
-TreeNode * TreeNode::addRight(DataValue * data)
-{
-	if (rightNode != nullptr)
-	{
-		throw "Right node already exists for node: " + rightNode->getData()->getValue();
-	}
-	rightNode = new TreeNode();
-	rightNode->setData(data);
-	return rightNode;
-}
-
-
 void TreeNode::deleteNode(TreeNode *& tree, string value)
 {
 	if (value == tree->getData()->getValue())
@@ -105,10 +112,14 @@ void TreeNode::deleteNode(TreeNode *& tree, string value)
 		}
 		else if (tree->leftNode != nullptr && tree->rightNode != nullptr)
 		{
-			tree->setData(tree->getRight()->getData());
-			
+				TreeNode *temp = FindMin(tree->rightNode);
+				tree->setData(temp->getData());
+			    deleteNode(tree->rightNode,temp->getData()->getValue());
 		}
-		
+		else
+		{
+			// I need to throw an exception when the value doesn't exist
+		}
 	}
     else if (value < tree->getData()->getValue())
 	{
@@ -120,12 +131,13 @@ void TreeNode::deleteNode(TreeNode *& tree, string value)
 	}
 }
 void TreeNode::insert(TreeNode * &tree, DataValue *value) {
+	//Throw an exception when a tree already exist
 	if (tree == nullptr)
 	{
 		tree = new TreeNode();
 		tree->getRight() == nullptr;
 		tree->getLeft() == nullptr;
-		tree->setData(value);//need to set left/right pointer in parent to new TreeNode
+		tree->setData(value);
 	}
 	else if (value->getValue() < tree->getData()->getValue())
 	{

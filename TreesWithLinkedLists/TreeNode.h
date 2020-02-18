@@ -15,9 +15,9 @@ public:
 	void setRight(TreeNode * node);
 	void setData(DataValue * data);
 	DataValue * getData();
-	TreeNode * addLeft(DataValue * data);
-	TreeNode* addRight(DataValue * data);
-	
+	//TreeNode * addLeft(DataValue * data);
+	//TreeNode* addRight(DataValue * data);
+	TreeNode* FindMin(TreeNode* root);
 	void insert(TreeNode *& tree, DataValue * value);
 	void deleteNode(TreeNode *& tree, string value);
 
