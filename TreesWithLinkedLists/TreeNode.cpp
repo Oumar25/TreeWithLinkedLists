@@ -98,16 +98,19 @@ void TreeNode::deleteNode(TreeNode *& tree, string value)
 		if (tree->leftNode == nullptr && tree->rightNode == nullptr)
 		{
 			cout << "Found" << endl;
+			//delete tree->getData();
 			tree = nullptr;
 		}
 		else if (tree->leftNode == nullptr && tree->rightNode != nullptr)
 		{
 			tree->setData(tree->getRight()->getData());
+		//	delete tree->getLeft();
 			tree->rightNode = nullptr;
 		}
 		else if (tree->leftNode != nullptr && tree->rightNode == nullptr)
 		{
 			tree->setData(tree->getLeft()->getData());
+		//	delete tree->getLeft();
 			tree->leftNode = nullptr;
 		}
 		else if (tree->leftNode != nullptr && tree->rightNode != nullptr)
@@ -116,10 +119,10 @@ void TreeNode::deleteNode(TreeNode *& tree, string value)
 				tree->setData(temp->getData());
 			    deleteNode(tree->rightNode,temp->getData()->getValue());
 		}
-		else
-		{
-			// I need to throw an exception when the value doesn't exist
-		}
+		//else
+		//{
+		//	// I need to throw an exception when the value doesn't exist
+		//}
 	}
     else if (value < tree->getData()->getValue())
 	{

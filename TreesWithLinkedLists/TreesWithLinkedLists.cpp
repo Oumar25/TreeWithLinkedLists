@@ -14,6 +14,7 @@ int main()
     std::cout << "Hello World!\n"; 
 	int nodeNumber = 0;
 	TreeNode * root = new TreeNode();
+	//string oumar = "k";
 	root->setData(new DataValue("k", ++nodeNumber));
 	//TreeNode *c = new TreeNode();
 
