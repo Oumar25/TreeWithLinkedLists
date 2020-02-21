@@ -15,15 +15,27 @@ int main()
 	int nodeNumber = 0;
 	TreeNode * root = new TreeNode();
 	//string oumar = "k";
-	root->setData(new DataValue("k", ++nodeNumber));
-	//TreeNode *c = new TreeNode();
+	root->setData(new DataValue("E", ++nodeNumber));
 
-	root->insert(root, new DataValue("l", ++nodeNumber));
-	root->insert(root, new DataValue("d", ++nodeNumber));
-	root->insert(root, new DataValue("a", ++nodeNumber));
-	root->insert(root, new DataValue("e", ++nodeNumber));
-	root->insert(root, new DataValue("f", ++nodeNumber));
-	root->deleteNode(root, "e");
+
+	//TreeNode *c = new TreeNode();
+ root->insert(root,new DataValue("C", ++nodeNumber));
+ root->insert(root, new DataValue("A", ++nodeNumber));
+ root->insert(root, new DataValue("B", ++nodeNumber));
+ root->insert(root, new DataValue("D", ++nodeNumber));
+ root->insert(root, new DataValue("M", ++nodeNumber));
+ root->insert(root, new DataValue("H", ++nodeNumber));
+ root->insert(root, new DataValue("F", ++nodeNumber));
+ root->insert(root, new DataValue("G", ++nodeNumber));
+ root->insert(root, new DataValue("J", ++nodeNumber));
+ root->insert(root, new DataValue("P", ++nodeNumber));
+ root->insert(root, new DataValue("N", ++nodeNumber));
+ root->insert(root, new DataValue("R", ++nodeNumber));
+ root->insert(root, new DataValue("Q", ++nodeNumber));
+ displayTree(root, " ", " ");
+ cout << endl;
+ root->deleteNode(root, "E");
+//	root->insert(root, new DataValue("e", ++nodeNumber));
 	displayTree(root, " ", " ");
 
 

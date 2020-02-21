@@ -83,7 +83,7 @@ DataValue * TreeNode::getData()
 //	return rightNode;
 //}
 
-TreeNode * TreeNode::FindMin(TreeNode * root)
+TreeNode * TreeNode::FindMax(TreeNode * root)
 {
 	while (root->leftNode != NULL)
 	{ 
@@ -98,31 +98,34 @@ void TreeNode::deleteNode(TreeNode *& tree, string value)
 		if (tree->leftNode == nullptr && tree->rightNode == nullptr)
 		{
 			cout << "Found" << endl;
-			//delete tree->getData();
+			//tree->~TreeNode();
 			tree = nullptr;
 		}
 		else if (tree->leftNode == nullptr && tree->rightNode != nullptr)
 		{
-			tree->setData(tree->getRight()->getData());
-		//	delete tree->getLeft();
-			tree->rightNode = nullptr;
+			TreeNode *temp = FindMax(tree->rightNode);
+			tree->setData(temp->getData());
+			deleteNode(tree->rightNode, temp->getData()->getValue());
+		//	tree->setData(tree->getRight()->getData());
+		////	delete tree->getRight()->getData();
+		//	//tree->~TreeNode();
+		//	tree->rightNode = nullptr;
+
 		}
 		else if (tree->leftNode != nullptr && tree->rightNode == nullptr)
 		{
+
 			tree->setData(tree->getLeft()->getData());
 		//	delete tree->getLeft();
+			//tree->~TreeNode();
 			tree->leftNode = nullptr;
 		}
 		else if (tree->leftNode != nullptr && tree->rightNode != nullptr)
 		{
-				TreeNode *temp = FindMin(tree->rightNode);
+				TreeNode *temp = FindMax(tree->rightNode);
 				tree->setData(temp->getData());
 			    deleteNode(tree->rightNode,temp->getData()->getValue());
 		}
-		//else
-		//{
-		//	// I need to throw an exception when the value doesn't exist
-		//}
 	}
     else if (value < tree->getData()->getValue())
 	{
